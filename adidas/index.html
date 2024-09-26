@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-size: cover; /* Copri tutto lo schermo */
+            background-position: center; /* Centra l'immagine */
+            background-repeat: no-repeat; /* Non ripetere l'immagine */
+            font-family: 'Arial', Arial, sans-serif; /* Font moderno */
+            background-color: #1f1f1f;
+            letter-spacing: 1px;
+            color: #ffffff; /* Colore del testo */
+            text-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Ombra più scura al passaggio del mouse */
+        }
+
+        .button {
+            font-weight: bold;
+            background-color: #b6589e; /* Colore di sfondo del pulsante */
+            color: #fff; /* Colore del testo del pulsante */
+            border: none; /* Rimuovi il bordo */
+            border-radius: 10px; /* Bordi arrotondati */
+            padding: 10px 20px; /* Padding interno del pulsante */
+            font-size: 16px; /* Dimensione del font */
+            cursor: pointer; /* Cambia il cursore quando si passa sopra */
+            transition: background-color 0.3s, box-shadow 0.3s; /* Transizione per il colore di sfondo e l'ombra */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombra scura sotto il pulsante */
+            text-decoration: none; /* Rimuovi la linea sottolineata */
+        }
+
+        .button:hover {
+            background-color: #a03f7d; /* Colore di sfondo al passaggio del mouse */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Ombra più scura al passaggio del mouse */
+        }
+
+        .illuminated-text {
+            color: #ffffff; /* Colore del testo */
+            text-shadow: 
+                1px 1px 3px #000000, /* Ombra scura (nero) */
+                0 0 5px #444444, /* Ombra scura (grigio scuro) */
+                0 0 10px #444444; /* Ombra scura (grigio scuro) */
+            margin: 20px 0; /* Margine sopra e sotto il testo */
+            font-size: 24px; /* Dimensione del font */
+            letter-spacing: 1px; /* Aumenta la spaziatura tra i caratteri */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+    </style>
+    <script type="text/javascript">
+        // Funzione per ottenere i parametri dall'URL
+        function getSKUParam() {
+            const urlParams = new URLSearchParams(window.location.search); // Ottieni i parametri della query string
+            return urlParams.get('sku'); // Restituisci il parametro 'sku'
+        }
+
+        window.onload = function() {
+            const sku = getSKUParam(); // Ottieni il valore del parametro 'sku'
+            if (sku) {
+                // Reindirizza automaticamente alla URL desiderata con il parametro SKU
+                const redirectUrl = `https://confirmed.onelink.me/mzYA?pid=share&af_dp=adidas-confirmed%3A%2F%2Fproduct%2F${sku}`;
+                window.location.href = redirectUrl;
+
+                // Modifica il link del pulsante
+                const button = document.getElementById('confirmed-button');
+                button.href = redirectUrl;
+            } else {
+                console.error('SKU non trovato nell\'URL');
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Redirect To CONFIRMED APP...</h1>
+
+    <img src="tdv.png" alt="Immagine TDV">
+    <br>
+    <a id="confirmed-button" href="#" class="button">Vai su CONFIRMED</a> <!-- Il link verrà aggiornato dinamicamente -->
+</body>
+</html>
