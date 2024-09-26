@@ -19,14 +19,9 @@
             letter-spacing: 1px;
             color: #ffffff; /* Colore del testo */
             text-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Ombra più scura al passaggio del mouse */
-
         }
 
-        
-
-        
-
-       .button {
+        .button {
             font-weight: bold;
             background-color: #b6589e; /* Colore di sfondo del pulsante */
             color: #fff; /* Colore del testo del pulsante */
@@ -39,7 +34,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombra scura sotto il pulsante */
             text-decoration: none; /* Rimuovi la linea sottolineata */
         }
-        
+
         .button:hover {
             background-color: #a03f7d; /* Colore di sfondo al passaggio del mouse */
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Ombra più scura al passaggio del mouse */
@@ -63,19 +58,34 @@
         }
     </style>
     <script type="text/javascript">
-        // Reindirizza automaticamente alla URL desiderata
-        window.onload = function() {
-            //window.location.href = "snkrs://product/DA1469-001";
+        // Funzione per ottenere i parametri dall'URL
+        function getSKUParam() {
+            const urlParams = new URLSearchParams(window.location.search); // Ottieni i parametri della query string
+            return urlParams.get('sku'); // Restituisci il parametro 'sku'
         }
+
+        window.onload = function() {
+            const sku = getSKUParam(); // Ottieni il valore del parametro 'sku'
+            if (sku) {
+                // Reindirizza automaticamente alla URL desiderata con il parametro SKU
+                const redirectUrl = `mynike://x-callback-url/product-details?style-color=${sku}redirect=true`;
+                window.location.href = redirectUrl;
+
+                // Modifica il link del pulsante
+                const button = document.getElementById('nike-button');
+                button.href = redirectUrl;
+            } else {
+                console.error('SKU non trovato nell\'URL');
+            }
+        };
     </script>
 </head>
 <body>
-    <h1>Redirect To SNKRS APP...</h1>
-    
-    
+    <h1>Redirect To NIKE APP...</h1>
+
     <img src="tdv.png" alt="Immagine TDV">
     <br>
-    <a href="snkrs://product/DA1469-001" class="button">Vai a SNKRS</a>
+    <a id="nike-button" href="#" class="button">Vai a NIKE</a> <!-- Il link verrà aggiornato dinamicamente -->
 </body>
 </html>
 
