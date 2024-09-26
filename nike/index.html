@@ -68,7 +68,7 @@
             const sku = getSKUParam(); // Ottieni il valore del parametro 'sku'
             if (sku) {
                 // Reindirizza automaticamente alla URL desiderata con il parametro SKU
-                const redirectUrl = `mynike://x-callback-url/product-details?style-color=${sku}redirect=true`;
+                const redirectUrl = `mynike://x-callback-url/product-details?style-color=${sku}&redirect=true`;
                 window.location.href = redirectUrl;
 
                 // Modifica il link del pulsante
